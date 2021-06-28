@@ -24,8 +24,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (IBAction)didTapLogin:(id)sender {
+- (IBAction)onLogin:(id)sender {
     [[APIManager shared] loginWithCompletion:^(BOOL success, NSError *error) {
         if (success) {
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
@@ -34,6 +33,9 @@
         }
     }];
 }
+
+
+
 
 /*
 #pragma mark - Navigation

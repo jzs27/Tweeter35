@@ -8,6 +8,9 @@
 
 #import "TimelineViewController.h"
 #import "APIManager.h"
+#import "LoginViewController.h"
+#import "AppDelegate.h"
+
 
 @interface TimelineViewController ()
 
@@ -36,6 +39,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)onLogout:(id)sender {
+    NSLog(@"pressing logout button");
+
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+
+    [[APIManager shared] logout];
+}
+
+
+
+//
+
 
 /*
 #pragma mark - Navigation
