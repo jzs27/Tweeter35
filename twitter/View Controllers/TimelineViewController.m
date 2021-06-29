@@ -13,9 +13,10 @@
 #import "Tweet.h"
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "ComposeViewController.h"
 
 
-@interface TimelineViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property NSMutableArray *arrayOfTweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -29,12 +30,11 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate=self;
+    
     [self loadTweets];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
-    
     [self.refreshControl addTarget:self action:@selector(loadTweets) forControlEvents:UIControlEventValueChanged];
-    
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
 }
@@ -81,8 +81,17 @@
     TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
     cell.screenNameLabel.text = tweet.user.screenName;
     cell.usernameLabel.text = tweet.user.name;
-    //NSInt *rtcount = tweet.retweetCount;
-    //cell.retweetCountLabel.text = tweet.retweetCount;
+    
+    NSString *rtcountString = [NSString stringWithFormat:@"%d",tweet.retweetCount];
+    NSString *favcountString = [NSString stringWithFormat:@"%d",tweet.favoriteCount];
+    //NSString *replycountString = [NSString stringWithFormat:@"%d",tweet.];
+    
+    cell.retweetCountLabel.text = rtcountString;
+    
+    //if (rtcountString != @
+    
+    cell.favoriteCountLabel.text = favcountString;
+
     cell.timestampLabel.text = tweet.createdAtString;
     cell.tweetTextLabel.text = tweet.text;
     
@@ -97,20 +106,26 @@
     return cell;
 }
 
-
+- (void)didTweet:(Tweet *)tweet{
+    [self.arrayOfTweets addObject:tweet];
+    [self.tableView reloadData];
+}
 
 //
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+    composeController.delegate = self;
 }
-*/
+
 
 
 @end
