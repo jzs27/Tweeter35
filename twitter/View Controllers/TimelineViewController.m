@@ -19,6 +19,7 @@
 
 @property NSMutableArray *arrayOfTweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic,strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -30,6 +31,11 @@
     self.tableView.delegate=self;
     [self loadTweets];
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    
+    [self.refreshControl addTarget:self action:@selector(loadTweets) forControlEvents:UIControlEventValueChanged];
+    
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
     
 }
 
@@ -61,6 +67,7 @@
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
+        [self.refreshControl endRefreshing];
     }];
     
 }
