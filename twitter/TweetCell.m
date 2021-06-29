@@ -7,6 +7,7 @@
 //
 
 #import "TweetCell.h"
+#import "APIManager.h"
 
 @implementation TweetCell
 
@@ -20,5 +21,33 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)didTapFavorite:(id)sender {
+    self.tweet.favorited = YES;
+    self.tweet.favoriteCount+=1;
+    [self setFavorite:YES];
+    
+    //update UI
+    NSString *favcountString = [NSString stringWithFormat:@"%d",self.tweet.favoriteCount];
+    self.favoriteCountLabel.text =favcountString;
+    
+    // Send a post request
+    [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+         if(error){
+              NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+         }
+         else{
+             NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+         }
+     }];
+}
+
+- (void) setFavorite: (BOOL) favorited {
+    [self.favoriteButton setSelected: favorited];
+    if (favorited) self.favoriteCountLabel.textColor = [[UIColor alloc] initWithRed:211.0/255.0 green:58.0/255.0 blue:79.0/255.0 alpha:1];
+    else self.favoriteCountLabel.textColor = [[UIColor alloc] initWithRed:172.0/255.0 green:184.0/255.0 blue:193.0/255.0 alpha:1];
+    
+}
+
+
 
 @end

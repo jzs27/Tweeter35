@@ -81,6 +81,7 @@
     TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
     cell.screenNameLabel.text = tweet.user.screenName;
     cell.usernameLabel.text = tweet.user.name;
+    cell.tweet = tweet;
     
     NSString *rtcountString = [NSString stringWithFormat:@"%d",tweet.retweetCount];
     NSString *favcountString = [NSString stringWithFormat:@"%d",tweet.favoriteCount];
