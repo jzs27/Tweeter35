@@ -107,6 +107,15 @@
     [self.tableView reloadData];
 }
 
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if(indexPath.row + 1 == [self.arrayOfTweets count]){
+//        [self loadMoreData:[self.arrayOfTweets count] + 20];
+//        [self.tableView reloadData];
+//    }
+//}
+
+
+
 //
 
 
