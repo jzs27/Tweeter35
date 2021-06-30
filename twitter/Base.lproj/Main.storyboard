@@ -243,7 +243,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QnL-LT-dGI">
-                                <rect key="frame" x="27" y="142" width="332" height="166"/>
+                                <rect key="frame" x="99" y="123" width="295" height="266"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -251,12 +251,16 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbx-dL-oC1">
-                                <rect key="frame" x="308" y="446" width="21" height="31"/>
+                                <rect key="frame" x="320" y="338" width="74" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SG5-WQ-pzD">
+                                <rect key="frame" x="0.0" y="123" width="81" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bfa-Kq-lbD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -278,6 +282,7 @@
                     <connections>
                         <outlet property="characterCountLabel" destination="kbx-dL-oC1" id="csh-Nf-dje"/>
                         <outlet property="composeTweetView" destination="QnL-LT-dGI" id="ZVf-xG-PpD"/>
+                        <outlet property="profilePictureView" destination="SG5-WQ-pzD" id="21b-li-MTt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GM1-nk-OyH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
