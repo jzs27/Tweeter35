@@ -22,6 +22,7 @@
 		A5A78C01268A949E0051EC14 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78C00268A949E0051EC14 /* Tweet.m */; };
 		A5A78C04268A9E460051EC14 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78C03268A9E460051EC14 /* TweetCell.m */; };
 		A5A78C07268BB9080051EC14 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78C06268BB9080051EC14 /* ComposeViewController.m */; };
+		A5A78C0A268BE6FD0051EC14 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78C09268BE6FD0051EC14 /* DetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		A5A78C03268A9E460051EC14 /* TweetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
 		A5A78C05268BB9080051EC14 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		A5A78C06268BB9080051EC14 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		A5A78C08268BE6FD0051EC14 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		A5A78C09268BE6FD0051EC14 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +155,8 @@
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
 				A5A78C05268BB9080051EC14 /* ComposeViewController.h */,
 				A5A78C06268BB9080051EC14 /* ComposeViewController.m */,
+				A5A78C08268BE6FD0051EC14 /* DetailsViewController.h */,
+				A5A78C09268BE6FD0051EC14 /* DetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 			files = (
 				A5A78C04268A9E460051EC14 /* TweetCell.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
+				A5A78C0A268BE6FD0051EC14 /* DetailsViewController.m in Sources */,
 				A5A78BFE268A86BE0051EC14 /* User.m in Sources */,
 				A5A78C07268BB9080051EC14 /* ComposeViewController.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,

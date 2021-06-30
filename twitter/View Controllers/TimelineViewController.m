@@ -14,7 +14,7 @@
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "ComposeViewController.h"
-
+#import "DetailsViewController.h"
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -122,10 +122,25 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    //comment out this one and it works?
+    //TimelineViewController *temp = [segue destinationViewController];
+    
     UINavigationController *navigationController = [segue destinationViewController];
     ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
     composeController.delegate = self;
+    
+    UITableViewCell *tappedcell = sender;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedcell];
+    Tweet *tweet  = self.arrayOfTweets[indexPath.row];
+    DetailsViewController *detailsviewcontroller = [segue destinationViewController];
+    
+    detailsviewcontroller.tweet = tweet;
+    NSLog(@"Tapping on a tweet!");
+    
 }
+
+
 
 
 
