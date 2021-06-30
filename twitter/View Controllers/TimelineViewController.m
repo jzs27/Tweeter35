@@ -15,6 +15,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "ComposeViewController.h"
 #import "DetailsViewController.h"
+#import "DateTools.h"
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -85,15 +86,14 @@
     
     NSString *rtcountString = [NSString stringWithFormat:@"%d",tweet.retweetCount];
     NSString *favcountString = [NSString stringWithFormat:@"%d",tweet.favoriteCount];
-    //NSString *replycountString = [NSString stringWithFormat:@"%d",tweet.];
+    
     
     cell.retweetCountLabel.text = rtcountString;
     
-    //if (rtcountString != @
-    
     cell.favoriteCountLabel.text = favcountString;
 
-    cell.timestampLabel.text = tweet.createdAtString;
+    //cell.timestampLabel.text = tweet.createdAtString;
+    cell.timestampLabel.text = tweet.timeAgoString;
     cell.tweetTextLabel.text = tweet.text;
     
     NSString *URLString = tweet.user.profilePicture;
@@ -125,18 +125,20 @@
     
     //comment out this one and it works?
     //TimelineViewController *temp = [segue destinationViewController];
-    
+    if ([[segue identifier] isEqualToString:@"detailViewSegue"]){
+        UITableViewCell *tappedcell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedcell];
+        Tweet *tweet  = self.arrayOfTweets[indexPath.row];
+        DetailsViewController *detailsviewcontroller = [segue destinationViewController];
+        
+        detailsviewcontroller.tweet = tweet;
+        NSLog(@"Tapping on a tweet!");
+    }else{
+        
     UINavigationController *navigationController = [segue destinationViewController];
     ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
     composeController.delegate = self;
-    
-    UITableViewCell *tappedcell = sender;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedcell];
-    Tweet *tweet  = self.arrayOfTweets[indexPath.row];
-    DetailsViewController *detailsviewcontroller = [segue destinationViewController];
-    
-    detailsviewcontroller.tweet = tweet;
-    NSLog(@"Tapping on a tweet!");
+    }
     
 }
 
