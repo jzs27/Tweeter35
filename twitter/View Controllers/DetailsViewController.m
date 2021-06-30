@@ -80,6 +80,35 @@
     
 }
 
+- (IBAction)didTapRetweet:(id)sender {
+    self.tweet.retweeted = YES;
+    self.tweet.retweetCount+=1;
+    [self setRetweet:YES];
+    
+    //update UI
+    NSString *rtcountString = [NSString stringWithFormat:@"%d",self.tweet.retweetCount];
+    self.retweetCountLabel.text =rtcountString;
+    
+    // Send a post request
+    [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+         if(error){
+              NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+         }
+         else{
+             NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+         }
+     }];
+    
+}
+
+
+
+-(void) setRetweet: (BOOL) retweeted {
+[self.retweetButton setSelected:retweeted];
+if (retweeted) self.retweetCountLabel.textColor = [[UIColor alloc] initWithRed:95.0/255.0 green:204.0/255.0 blue:140.0/255.0 alpha:1];
+else self.retweetCountLabel.textColor = [[UIColor alloc] initWithRed:172.0/255.0 green:184.0/255.0 blue:193.0/255.0 alpha:1];
+}
+
 
 
 /*
