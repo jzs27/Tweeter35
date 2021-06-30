@@ -22,23 +22,48 @@
     // Configure the view for the selected state
 }
 - (IBAction)didTapFavorite:(id)sender {
-    self.tweet.favorited = YES;
-    self.tweet.favoriteCount+=1;
-    [self setFavorite:YES];
+    if (self.tweet.favorited == NO){
+        self.tweet.favorited = YES;
+        self.tweet.favoriteCount+=1;
+        [self setFavorite:YES];
+        
+        //update UI
+        NSString *favcountString = [NSString stringWithFormat:@"%d",self.tweet.favoriteCount];
+        self.favoriteCountLabel.text =favcountString;
+        
+        // Send a post request
+        [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+             }
+         }];
+    }
+    //unfavorite tweet
+    else{
+        self.tweet.favorited = NO;
+        self.tweet.favoriteCount-=1;
+        
+        //update UI
+        NSString *favcountString = [NSString stringWithFormat:@"%d",self.tweet.favoriteCount];
+        self.favoriteCountLabel.text =favcountString;
+        [self setFavorite:NO];
+        //self.favoriteButton.adjustsIma
+        
+        // Send a post request
+        [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
+             }
+         }];
+        
+    }
     
-    //update UI
-    NSString *favcountString = [NSString stringWithFormat:@"%d",self.tweet.favoriteCount];
-    self.favoriteCountLabel.text =favcountString;
-    
-    // Send a post request
-    [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
-         if(error){
-              NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
-         }
-         else{
-             NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
-         }
-     }];
 }
 
 
