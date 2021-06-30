@@ -76,23 +76,45 @@
 
 
 - (IBAction)didTapRetweet:(id)sender {
-    self.tweet.retweeted = YES;
-    self.tweet.retweetCount+=1;
-    [self setRetweet:YES];
-    
-    //update UI
-    NSString *rtcountString = [NSString stringWithFormat:@"%d",self.tweet.retweetCount];
-    self.retweetCountLabel.text =rtcountString;
-    
-    // Send a post request
-    [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
-         if(error){
-              NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
-         }
-         else{
-             NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
-         }
-     }];
+    if (self.tweet.retweeted==NO){
+        self.tweet.retweeted = YES;
+        self.tweet.retweetCount+=1;
+        [self setRetweet:YES];
+        
+        //update UI
+        NSString *rtcountString = [NSString stringWithFormat:@"%d",self.tweet.retweetCount];
+        self.retweetCountLabel.text =rtcountString;
+        
+        // Send a post request
+        [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+             }
+         }];
+    }
+    else{
+        self.tweet.retweeted = NO;
+        self.tweet.retweetCount-=1;
+        [self setRetweet:NO];
+        
+        //update UI
+        NSString *rtcountString = [NSString stringWithFormat:@"%d",self.tweet.retweetCount];
+        self.retweetCountLabel.text =rtcountString;
+        
+        // Send a post request
+        [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+             }
+         }];
+    }
+
 }
 
 -(void) setRetweet: (BOOL) retweeted {
