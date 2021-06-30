@@ -41,6 +41,7 @@
      }];
 }
 
+
 - (void) setFavorite: (BOOL) favorited {
     [self.favoriteButton setSelected: favorited];
     if (favorited) self.favoriteCountLabel.textColor = [[UIColor alloc] initWithRed:211.0/255.0 green:58.0/255.0 blue:79.0/255.0 alpha:1];

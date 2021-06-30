@@ -62,7 +62,6 @@
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
             self.arrayOfTweets = (NSMutableArray*) tweets;
-            
             [self.tableView reloadData];
 
         } else {
@@ -92,7 +91,6 @@
     
     cell.favoriteCountLabel.text = favcountString;
 
-    //cell.timestampLabel.text = tweet.createdAtString;
     cell.timestampLabel.text = tweet.timeAgoString;
     cell.tweetTextLabel.text = tweet.text;
     
@@ -101,9 +99,6 @@
     
     [cell.profilePictureView setImageWithURL:url];
 
-    
-    
-    
     return cell;
 }
 
