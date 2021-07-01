@@ -58,7 +58,7 @@
 
     // TODO: Update character count label
     
-    self.characterCountLabel.text = [NSString stringWithFormat:@"%d",newText.length];
+    self.characterCountLabel.text = [NSString stringWithFormat:@"%d",20- newText.length];
     if (newText.length >= characterLimit){
         self.characterCountLabel.textColor =[[UIColor alloc] initWithRed:255.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1];    }
 

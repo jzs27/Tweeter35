@@ -79,8 +79,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     Tweet *tweet  = self.arrayOfTweets[indexPath.row];
     TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
-    cell.screenNameLabel.text = tweet.user.screenName;
-    cell.usernameLabel.text = tweet.user.name;
+    cell.nameLabel.text = tweet.user.name;
+    cell.screennameLabel.text = tweet.user.screenName;
+    cell.screennameLabel.text = [NSString stringWithFormat:@"%@%@", @"@", tweet.user.screenName];
+    
     cell.tweet = tweet;
     
     NSString *rtcountString = [NSString stringWithFormat:@"%d",tweet.retweetCount];
