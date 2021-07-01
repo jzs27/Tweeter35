@@ -50,9 +50,25 @@
          formatter.dateStyle = NSDateFormatterShortStyle;
          formatter.timeStyle = NSDateFormatterNoStyle;
          // Convert Date to String
-         self.createdAtString = [formatter stringFromDate:date];
          
+     
+         self.createdAtString = [formatter stringFromDate:date];
          self.timeAgoString = date.shortTimeAgoSinceNow;
+         
+         //h:mm a
+         // Format createdAt date string
+         NSString *createdAtOriginalString2 = dictionary[@"created_at"];
+         NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
+         // Configure the input format to parse the date string
+         formatter2.dateFormat = @"h:mm a";
+         // Convert String to Date
+         NSDate *time = [formatter dateFromString:createdAtOriginalString2];
+         // Configure output format
+         formatter2.dateStyle = NSDateFormatterShortStyle;
+         formatter2.timeStyle = NSDateFormatterNoStyle;
+         // Convert Date to String
+         self.timeString =[formatter2 stringFromDate:time];
+         
      }
      return self;
  }

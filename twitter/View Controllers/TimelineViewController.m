@@ -77,29 +77,35 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    Tweet *tweet  = self.arrayOfTweets[indexPath.row];
-    TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
-    cell.nameLabel.text = tweet.user.name;
-    cell.screennameLabel.text = tweet.user.screenName;
-    cell.screennameLabel.text = [NSString stringWithFormat:@"%@%@", @"@", tweet.user.screenName];
+//    Tweet *tweet  = self.arrayOfTweets[indexPath.row];
+//    TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
     
+    TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
+    Tweet *tweet = self.arrayOfTweets[indexPath.row];
+    
+    
+//    cell.nameLabel.text = tweet.user.name;
+//    cell.screennameLabel.text = tweet.user.screenName;
+//    cell.screennameLabel.text = [NSString stringWithFormat:@"%@%@", @"@", tweet.user.screenName];
+//
+//    cell.tweet = tweet;
+//
+//    NSString *rtcountString = [NSString stringWithFormat:@"%d",tweet.retweetCount];
+//    NSString *favcountString = [NSString stringWithFormat:@"%d",tweet.favoriteCount];
+//
+//    cell.retweetCountLabel.text = rtcountString;
+//
+//    cell.favoriteCountLabel.text = favcountString;
+//
+//    cell.timestampLabel.text = tweet.timeAgoString;
+//    cell.tweetTextLabel.text = tweet.text;
+//
+//    NSString *URLString = tweet.user.profilePicture;
+//    NSURL *url = [NSURL URLWithString:URLString];
+//
+//    [cell.profilePictureView setImageWithURL:url];
     cell.tweet = tweet;
     
-    NSString *rtcountString = [NSString stringWithFormat:@"%d",tweet.retweetCount];
-    NSString *favcountString = [NSString stringWithFormat:@"%d",tweet.favoriteCount];
-    
-    cell.retweetCountLabel.text = rtcountString;
-    
-    cell.favoriteCountLabel.text = favcountString;
-
-    cell.timestampLabel.text = tweet.timeAgoString;
-    cell.tweetTextLabel.text = tweet.text;
-    
-    NSString *URLString = tweet.user.profilePicture;
-    NSURL *url = [NSURL URLWithString:URLString];
-    
-    [cell.profilePictureView setImageWithURL:url];
-
     return cell;
 }
 

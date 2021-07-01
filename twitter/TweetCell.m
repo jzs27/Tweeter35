@@ -7,7 +7,11 @@
 //
 
 #import "TweetCell.h"
+#import "Tweet.h"
+#import "User.h"
 #import "APIManager.h"
+#import "TimelineViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation TweetCell
 
@@ -18,6 +22,12 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+    self.profilePictureView.layer.cornerRadius = self.profilePictureView.frame.size.width / 2;
+    self.profilePictureView.layer.masksToBounds = YES;
+    //self.profilePictureView.layer.borderWidth = 2;
+    
+    [self updateCellWithTweet:self.tweet];
+    NSLog(@"%@", self.tweet);
 
     // Configure the view for the selected state
 }
@@ -121,6 +131,28 @@
     [self.retweetButton setSelected:retweeted];
     if (retweeted) self.retweetCountLabel.textColor = [[UIColor alloc] initWithRed:95.0/255.0 green:204.0/255.0 blue:140.0/255.0 alpha:1];
     else self.retweetCountLabel.textColor = [[UIColor alloc] initWithRed:172.0/255.0 green:184.0/255.0 blue:193.0/255.0 alpha:1];
+}
+
+- (void)updateCellWithTweet:(Tweet *)tweet{
+    self.nameLabel.text = self.tweet.user.name;
+    self.screennameLabel.text = self.tweet.user.screenName;
+    self.screennameLabel.text = [NSString stringWithFormat:@"%@%@", @"@", self.tweet.user.screenName];
+    
+    NSString *rtcountString = [NSString stringWithFormat:@"%d",self.tweet.retweetCount];
+    NSString *favcountString = [NSString stringWithFormat:@"%d",self.tweet.favoriteCount];
+    self.retweetCountLabel.text = rtcountString;
+    self.favoriteCountLabel.text = favcountString;
+    self.timestampLabel.text = self.tweet.timeAgoString;
+    self.tweetTextLabel.text = self.tweet.text;
+    
+    NSString *URLStringNormal = self.tweet.user.profilePicture;
+    //remove "normal" from URL String to make profile picture less blurry
+    NSString *URLString= [URLStringNormal
+       stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
+    NSURL *url = [NSURL URLWithString:URLString];
+//    NSData *profileData = [UIImage ]
+
+    [self.profilePictureView setImageWithURL:url];
 }
 
 
