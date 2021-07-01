@@ -137,11 +137,15 @@
     self.screennameLabel.text = self.tweet.user.screenName;
     self.screennameLabel.text = [NSString stringWithFormat:@"%@%@", @"@", self.tweet.user.screenName];
     
+    if (self.tweet.retweetCount != 0){
+        NSString *rtcountString = [NSString stringWithFormat:@"%d",self.tweet.retweetCount];
+        self.retweetCountLabel.text = rtcountString;
+    }
+    if (self.tweet.favoriteCount !=0){
+        NSString *favcountString = [NSString stringWithFormat:@"%d",self.tweet.favoriteCount];
+        self.favoriteCountLabel.text = favcountString;
+    }
     
-    NSString *rtcountString = [NSString stringWithFormat:@"%d",self.tweet.retweetCount];
-    NSString *favcountString = [NSString stringWithFormat:@"%d",self.tweet.favoriteCount];
-    self.retweetCountLabel.text = rtcountString;
-    self.favoriteCountLabel.text = favcountString;
     self.timestampLabel.text = self.tweet.timeAgoString;
     self.tweetTextLabel.text = self.tweet.text;
     
