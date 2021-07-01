@@ -15,7 +15,7 @@
 @interface ComposeViewController ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *composeTweetView;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
-@property(class, nonatomic, readonly) UIColor *redColor;
+
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureView;
 
 @end

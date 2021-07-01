@@ -71,6 +71,19 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     }];
 }
 
+- (void)getHomeTimelineWithCompletionReload:(NSString *)maxID completion:(void(^)(NSArray *tweets, NSError *error))completion {
+    NSDictionary *parameters = @{@"max_id": maxID};
+    [self GET:@"1.1/statuses/home_timeline.json"
+       parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+           // Success
+           NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
+           completion(tweets, nil);
+       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           // There was a problem
+           completion(nil, error);
+    }];
+}
+
 // TODO: Post Composed Tweet Method
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion{
     NSString *urlString = @"1.1/statuses/update.json";

@@ -21,4 +21,5 @@
 - (void)retweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
 - (void)unfavorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
 - (void)unretweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
+- (void)getHomeTimelineWithCompletionReload:(NSString*)maxID completion:(void(^)(NSArray *tweets, NSError *error))completion;
 @end

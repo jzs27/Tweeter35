@@ -86,7 +86,6 @@
     NSString *rtcountString = [NSString stringWithFormat:@"%d",tweet.retweetCount];
     NSString *favcountString = [NSString stringWithFormat:@"%d",tweet.favoriteCount];
     
-    
     cell.retweetCountLabel.text = rtcountString;
     
     cell.favoriteCountLabel.text = favcountString;
@@ -107,12 +106,31 @@
     [self.tableView reloadData];
 }
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if(indexPath.row + 1 == [self.arrayOfTweets count]){
-//        [self loadMoreData:[self.arrayOfTweets count] + 20];
-//        [self.tableView reloadData];
-//    }
-//}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row + 1 == [self.arrayOfTweets count]){
+        [self loadMoreData];
+        [self.tableView reloadData];
+    }
+}
+
+-(void)loadMoreData {
+    //[[APIManager shared] getHomeTimelineWithCompletionReload:maxID];
+    Tweet *lastTweet = self.arrayOfTweets[self.arrayOfTweets.count - 1]; // get the last tweet being displayed in the tableview
+    
+    
+    [[APIManager shared] getHomeTimelineWithCompletionReload:lastTweet.idStr completion:^(NSArray *tweets, NSError *error) {
+        if (tweets) {
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
+            [self.arrayOfTweets addObjectsFromArray:tweets];
+            [self.tableView reloadData];
+
+        } else {
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+        
+    }];
+}
+
 
 
 
