@@ -24,8 +24,7 @@
     [super setSelected:selected animated:animated];
     self.profilePictureView.layer.cornerRadius = self.profilePictureView.frame.size.width / 2;
     self.profilePictureView.layer.masksToBounds = YES;
-    //self.profilePictureView.layer.borderWidth = 2;
-    
+        
     [self updateCellWithTweet:self.tweet];
     NSLog(@"%@", self.tweet);
 
@@ -138,6 +137,7 @@
     self.screennameLabel.text = self.tweet.user.screenName;
     self.screennameLabel.text = [NSString stringWithFormat:@"%@%@", @"@", self.tweet.user.screenName];
     
+    
     NSString *rtcountString = [NSString stringWithFormat:@"%d",self.tweet.retweetCount];
     NSString *favcountString = [NSString stringWithFormat:@"%d",self.tweet.favoriteCount];
     self.retweetCountLabel.text = rtcountString;
@@ -146,11 +146,11 @@
     self.tweetTextLabel.text = self.tweet.text;
     
     NSString *URLStringNormal = self.tweet.user.profilePicture;
+    
     //remove "normal" from URL String to make profile picture less blurry
     NSString *URLString= [URLStringNormal
        stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
     NSURL *url = [NSURL URLWithString:URLString];
-//    NSData *profileData = [UIImage ]
 
     [self.profilePictureView setImageWithURL:url];
 }

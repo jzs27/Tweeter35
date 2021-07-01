@@ -28,28 +28,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.nameLabel.text = self.tweet.user.screenName;
-    self.usernameLabel.text = self.tweet.user.name;
+    
+
+    
+    self.nameLabel.text = self.tweet.user.name;
+    self.usernameLabel.text = [NSString stringWithFormat:@"%@%@", @"@", self.tweet.user.screenName];
     
     
     NSString *rtcountString = [NSString stringWithFormat:@"%d",self.tweet.retweetCount];
     NSString *favcountString = [NSString stringWithFormat:@"%d",self.tweet.favoriteCount];
-    //NSString *replycountString = [NSString stringWithFormat:@"%d",tweet.];
+    
     
     self.retweetCountLabel.text = rtcountString;
     
-    //if (rtcountString != @
+    
     
     self.favoriteCountLabel.text = favcountString;
 
     self.dateLabel.text = self.tweet.createdAtString;
     self.tweetTextLabel.text = self.tweet.text;
     
-    NSString *URLString = self.tweet.user.profilePicture;
+    NSString *URLStringNormal = self.tweet.user.profilePicture;
+    //remove "normal" from URL String to make profile picture less blurry
+    NSString *URLString= [URLStringNormal
+       stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
     NSURL *url = [NSURL URLWithString:URLString];
     
     [self.profilePictureView setImageWithURL:url];
-    // Do any additional setup after loading the view.
+    self.profilePictureView.layer.cornerRadius = self.profilePictureView.frame.size.width / 2;
+    self.profilePictureView.layer.masksToBounds = YES;
+    
+        // Do any additional setup after loading the view.
 }
 
 - (IBAction)didTapFavorite:(id)sender {
