@@ -26,26 +26,37 @@ The following **optional** features are implemented:
 - [x] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
 - [x] When composing, you should have a countdown for the number of characters remaining for the tweet (out of 280) (**1 point**)
 
-
-
 The following **additional** features are implemented:
 
 List anything else that you can get done to improve the app functionality!
 - [x] Retweet and like counts do not appear on the timeline until they are greater than 0.
 - [x] Improved UI.
 - [x] Profile picture view is circular.
-- [x]
 
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Implementing different parts of the API (replies, personal profiles, tweets with a certain hashtag etc.)
+2. Including videos from tweets. 
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+![ezgif com-gif-maker (15)](https://user-images.githubusercontent.com/71947227/124202684-7f484f80-daa0-11eb-9ee6-59841a839696.gif) LOGIN
 
+![ezgif com-gif-maker (14)](https://user-images.githubusercontent.com/71947227/124202592-45774900-daa0-11eb-8293-2930f9d8da0b.gif) LOGOUT
+
+![ezgif com-gif-maker (16)](https://user-images.githubusercontent.com/71947227/124202893-0f869480-daa1-11eb-87a9-64f2060663a4.gif) INFINITE SCROLL
+![ezgif com-gif-maker (17)](https://user-images.githubusercontent.com/71947227/124203065-802db100-daa1-11eb-9114-05bbfe78ffbc.gif) AUTOLAYOUT
+
+
+![ezgif com-gif-maker (18)](https://user-images.githubusercontent.com/71947227/124203198-c7b43d00-daa1-11eb-8296-30ebcd65171a.gif) PULL TO REFRESH
+
+![ezgif com-gif-maker (20)](https://user-images.githubusercontent.com/71947227/124203646-d3543380-daa2-11eb-8734-4055a9fc44f3.gif) PROFILE PICTURE, USERNAME, TWEET TEXT, TIMESTAMP, (UN)RETWEET AND (UN)FAVORITE
+
+![ezgif com-gif-maker (21)](https://user-images.githubusercontent.com/71947227/124203746-04346880-daa3-11eb-8d51-bb2c4be2fdb9.gif) COMPOSE TWEET AND COUNTDOWN
+
+ ![ezgif com-gif-maker (22)](https://user-images.githubusercontent.com/71947227/124203850-3e9e0580-daa3-11eb-9b52-dbe73bfc7c95.gif) DETAILS PAGE
 
 
 GIF created with [Kap](https://getkap.co/).
@@ -53,6 +64,8 @@ GIF created with [Kap](https://getkap.co/).
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+It was difficult at first to understand the API Manage file, how to constuct methods that require a "completion block" and navigating Objective C as a whole. Autolayout was very difficult as well.
 
 ## Credits
 
