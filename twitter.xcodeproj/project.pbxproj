@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -111,12 +111,6 @@
 				6AD278E620BC4B970085BC29 /* Info.plist */,
 				6AD278E720BC4B970085BC29 /* main.m */,
 				A5A78BFA268A79100051EC14 /* Keys.plist */,
-				A5A78BFC268A86BE0051EC14 /* User.h */,
-				A5A78BFD268A86BE0051EC14 /* User.m */,
-				A5A78BFF268A949E0051EC14 /* Tweet.h */,
-				A5A78C00268A949E0051EC14 /* Tweet.m */,
-				A5A78C02268A9E460051EC14 /* TweetCell.h */,
-				A5A78C03268A9E460051EC14 /* TweetCell.m */,
 			);
 			path = twitter;
 			sourceTree = "<group>";
@@ -142,6 +136,12 @@
 		6AD278FF20BCBF280085BC29 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A5A78BFC268A86BE0051EC14 /* User.h */,
+				A5A78BFD268A86BE0051EC14 /* User.m */,
+				A5A78C00268A949E0051EC14 /* Tweet.m */,
+				A5A78BFF268A949E0051EC14 /* Tweet.h */,
+				A5A78C02268A9E460051EC14 /* TweetCell.h */,
+				A5A78C03268A9E460051EC14 /* TweetCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";

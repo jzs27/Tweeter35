@@ -77,7 +77,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     Tweet *tweet = self.arrayOfTweets[indexPath.row];
     cell.tweet = tweet;
@@ -98,10 +97,8 @@
 }
 
 -(void)loadMoreData {
-    
+    //loads more data from the API
     Tweet *lastTweet = self.arrayOfTweets[self.arrayOfTweets.count - 1]; // get the last tweet being displayed in the tableview
-    
-    
     [[APIManager shared] getHomeTimelineWithCompletionReload:lastTweet.idStr completion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
@@ -126,11 +123,8 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     
-    //comment out this one and it works?
-    //TimelineViewController *temp = [segue destinationViewController];
+    
     if ([[segue identifier] isEqualToString:@"detailViewSegue"]){
         UITableViewCell *tappedcell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedcell];
@@ -139,6 +133,7 @@
         
         detailsviewcontroller.tweet = tweet;
         NSLog(@"Tapping on a tweet!");
+    //set segue for composeViewController
     }else{
         
     UINavigationController *navigationController = [segue destinationViewController];

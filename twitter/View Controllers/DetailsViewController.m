@@ -13,13 +13,14 @@
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureView;
 @property (weak, nonatomic) IBOutlet UILabel *tweetTextLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UILabel *favoriteCountLabel;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UILabel *retweetCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 
@@ -28,37 +29,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-
-    
     self.nameLabel.text = self.tweet.user.name;
     self.usernameLabel.text = [NSString stringWithFormat:@"%@%@", @"@", self.tweet.user.screenName];
     
-    
     NSString *rtcountString = [NSString stringWithFormat:@"%d",self.tweet.retweetCount];
     NSString *favcountString = [NSString stringWithFormat:@"%d",self.tweet.favoriteCount];
-    
-    
     self.retweetCountLabel.text = rtcountString;
-    
-    
-    
     self.favoriteCountLabel.text = favcountString;
-
+    
     self.dateLabel.text = self.tweet.createdAtString;
     self.tweetTextLabel.text = self.tweet.text;
+    self.timeLabel.text = self.tweet.timeString;
     
     NSString *URLStringNormal = self.tweet.user.profilePicture;
+    
     //remove "normal" from URL String to make profile picture less blurry
     NSString *URLString= [URLStringNormal
        stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
     NSURL *url = [NSURL URLWithString:URLString];
     
     [self.profilePictureView setImageWithURL:url];
+    //make profile picture circular
     self.profilePictureView.layer.cornerRadius = self.profilePictureView.frame.size.width / 2;
     self.profilePictureView.layer.masksToBounds = YES;
-    
-        // Do any additional setup after loading the view.
+
 }
 
 - (IBAction)didTapFavorite:(id)sender {
@@ -110,7 +104,9 @@
 
 - (void) setFavorite: (BOOL) favorited {
     [self.favoriteButton setSelected: favorited];
+    //change color of the favorite count label to red
     if (favorited) self.favoriteCountLabel.textColor = [[UIColor alloc] initWithRed:211.0/255.0 green:58.0/255.0 blue:79.0/255.0 alpha:1];
+    //change color of the favorite count label to grey
     else self.favoriteCountLabel.textColor = [[UIColor alloc] initWithRed:172.0/255.0 green:184.0/255.0 blue:193.0/255.0 alpha:1];
     
 }
@@ -162,7 +158,9 @@
 
 -(void) setRetweet: (BOOL) retweeted {
 [self.retweetButton setSelected:retweeted];
+//change color of the retweet count label  to green
 if (retweeted) self.retweetCountLabel.textColor = [[UIColor alloc] initWithRed:95.0/255.0 green:204.0/255.0 blue:140.0/255.0 alpha:1];
+    //change color of the retweet count label to grey
 else self.retweetCountLabel.textColor = [[UIColor alloc] initWithRed:172.0/255.0 green:184.0/255.0 blue:193.0/255.0 alpha:1];
 }
 

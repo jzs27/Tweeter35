@@ -56,7 +56,7 @@
          self.timeAgoString = date.shortTimeAgoSinceNow;
          
          //h:mm a
-         // Format createdAt date string
+         // Format createdAt date string for Time Label
          NSString *createdAtOriginalString2 = dictionary[@"created_at"];
          NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
          // Configure the input format to parse the date string
@@ -68,6 +68,7 @@
          formatter2.timeStyle = NSDateFormatterNoStyle;
          // Convert Date to String
          self.timeString =[formatter2 stringFromDate:time];
+        
          
      }
      return self;

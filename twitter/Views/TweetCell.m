@@ -135,6 +135,13 @@
 - (void)updateCellWithTweet:(Tweet *)tweet{
     self.nameLabel.text = self.tweet.user.name;
     self.screennameLabel.text = self.tweet.user.screenName;
+    self.nameLabel.minimumScaleFactor = 0.5;
+    self.screennameLabel.minimumScaleFactor = 0.5;
+    self.nameLabel.adjustsFontSizeToFitWidth = YES;
+    self.nameLabel.numberOfLines = 1;
+    self.screennameLabel.adjustsFontSizeToFitWidth = YES;
+    self.screennameLabel.numberOfLines = 1;
+    
     self.screennameLabel.text = [NSString stringWithFormat:@"%@%@", @"@", self.tweet.user.screenName];
     
     if (self.tweet.retweetCount != 0){

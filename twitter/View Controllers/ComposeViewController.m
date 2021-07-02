@@ -16,8 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *composeTweetView;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 
-@property (weak, nonatomic) IBOutlet UIImageView *profilePictureView;
-
 @end
 
 @implementation ComposeViewController
@@ -25,10 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.composeTweetView.delegate=self;
-    
-    self.composeTweetView.layer.borderWidth = 1;
-    //self.profilePictureView.layer.borderColor = CGColorCreateGenericRGB(47/255.0, 124/255.0, 246/255.0, 1);
-    self.composeTweetView.layer.borderColor = (__bridge CGColorRef _Nullable)([[UIColor alloc] initWithRed:172.0/255.0 green:184.0/255.0 blue:193.0/255.0 alpha:1]);
+// attempt to set border
+//    self.composeTweetView.layer.borderWidth = 1;
+//    self.composeTweetView.layer.borderColor = (__bridge CGColorRef _Nullable)([[UIColor alloc] initWithRed:172.0/255.0 green:184.0/255.0 blue:193.0/255.0 alpha:1]);
         
     
 
